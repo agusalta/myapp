@@ -1,4 +1,4 @@
-const ProductsModel = require("../models/productsModel");
+const TextModel = require("../models/textModel");
 
 // POSTMAN QUERY "http://localhost:3000/products?buscar=Camiseta" //
 
@@ -6,7 +6,7 @@ const getAll = async function (request, response, next) {
     try {
         const queryFindTitle = { title: { $regex: `.*${request.query.buscar || ""}.*`, $options: "i" } };
 
-        const products = await ProductsModel.find(queryFindTitle).populate("category");
+        const products = await TextModel.find(queryFindTitle).populate("category");
         response.json(products)
     } catch (e) {
         next(e)
@@ -15,12 +15,12 @@ const getAll = async function (request, response, next) {
 
 const getById = async function (request, response, next) {
     try {
-        const productId = request.params.id; 
-        const product = await ProductsModel.findById(productId);
+        const textId = request.params.id; 
+        const text = await TextModel.findById(textId);
         
-        if (!product) return response.status(404).json({ message: 'Producto no encontrado.' });
+        if (!text) return response.status(404).json({ message: 'Texto no encontrado.' });
         
-        response.json(product);
+        response.json(text);
     } catch (e) {
         e.status = 400;
         next(e);
@@ -32,15 +32,13 @@ const create = async function (request, response, next) {
     try {
         console.log(request.body)
 
-        const products = new ProductsModel({
+        const text = new TextModel({
             title: request.body.title,
-            price: request.body.price,
-            description: request.body.description,
-            quantity: request.body.quantity,
+            text: request.body.text,
             category: request.body.category,
         });
 
-        const document = await products.save();
+        const document = await text.save();
         response.status(201).json(document);
     } catch (e) {
         e.status = 400;
@@ -53,7 +51,7 @@ const update = async function (request, response, next) {
     console.log(request.body)
 
     try {
-        await ProductsModel.updateOne({ _id: request.params.id })
+        await TextModel.updateOne({ _id: request.params.id })
         response.status(204)
     } catch (e) {
         next(e)
@@ -72,7 +70,7 @@ const deleteJson = async function (request, response, next) {
     console.log(request.params.id)
 
     try {
-        await ProductsModel.deleteOne({ _id: request.params.id })
+        await TextModel.deleteOne({ _id: request.params.id })
         response.status(204)
     } catch (e) {
         next(e)

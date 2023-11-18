@@ -12,7 +12,8 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = 3000;
+var port = normalizePort(process.env.PORT || '3000');
+
 app.set('port', port);
 
 /**
@@ -25,7 +26,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, () => {console.log("El servidor arrancó en el puerto: " + port)});
 server.on('error', onError);
 server.on('listening', onListening);
 

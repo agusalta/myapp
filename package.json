@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "vite"
+    "dev": "nodemon server"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -23,9 +23,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
     "babel-loader": "^9.1.3",
-    "create-vite": "^4.4.1"
+    "create-vite": "^4.4.1",
+    "cross-env": "^7.0.3"
   }
 }

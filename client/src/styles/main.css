@@ -1,0 +1,77 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 70vh;
+    background-color: green;
+}
+
+.poema {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    height: 70vh;
+    width: 50%;
+}
+
+form {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: 80%;
+    height: 60%;
+    gap: 10px;
+}
+
+.controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.titulo {
+    padding: 1.5rem;
+    display: flex;
+    text-align: left;
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.texto {
+    font-size: 18px;
+    height: 80%;
+    padding: 1.5rem;
+}
+
+.titulo-left {
+    text-align: left;
+}
+.titulo-center {
+text-align: center;
+}
+.titulo-right {
+text-align: right;
+}
+
+.texto-left {
+text-align: left;
+}
+.texto-center {
+text-align: center;
+}
+.texto-right {
+text-align: right;
+}
+
+.btn {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+}
+
+.btn button {
+    padding: .5rem;
+}
