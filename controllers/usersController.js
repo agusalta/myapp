@@ -2,6 +2,16 @@ const UsersModel = require("../models/usersModel");
 const bcrypt = require("bcrypt")
 const jsonwebtoken = require("jsonwebtoken")
 
+const getUsers = async (req, res) => {
+    try {
+      const users = await UsersModel.find();
+      res.json({ message: 'Obtención de usuarios exitosa', users });
+    } catch (error) {
+      console.error('Error al obtener usuarios', error);
+      res.status(500).json({ error: 'Error interno del servidor al obtener usuarios' });
+    }
+};
+
 const register = async function(request, response, next) {
     try {
         console.log(request.body)
@@ -41,5 +51,6 @@ const login = async function(request, response, next) {
 
 module.exports = {
     register,
-    login
+    login,
+    getUsers
 };

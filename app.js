@@ -8,7 +8,7 @@ const jsonwebtoken = require("jsonwebtoken")
 // APP REQ
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var productRouter = require('./routes/products')
+var textRouter = require('./routes/text')
 const categoriesRouter = require("./routes/categories")
 
 var app = express();
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // app.use('/products', verifyToken, productRouter )
-app.use('/products', productRouter)
+app.use('/text', textRouter)
 app.use('/categories', categoriesRouter)
 
 function verifyToken(req, res, next) {
